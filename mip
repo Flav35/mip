@@ -1,0 +1,22 @@
+#!/usr/bin/python
+import os,urllib2,StringIO
+
+# VARS
+# Must be improved with Json format, easier for parsing
+url = "http://ip-api.com/line/?fields=query,city,lat,lon"
+asciiworld_bin = "/usr/local/asciiworld"
+######
+
+tmp_file = open("/tmp/asciiworld-latlong","w")
+latlong = []
+for i in StringIO.StringIO(urllib2.urlopen(url).read()):
+    latlong.append(i)
+# Ugly...
+tmp_file.write("points\n")
+tmp_file.write(latlong[1].rstrip()+" "+latlong[2])
+tmp_file.close()
+
+os.system("/usr/local/bin/asciiworld -l /tmp/asciiworld-latlong")
+
+# Print your IP, and city
+print latlong[0].rstrip()+" --> "+latlong[3]
