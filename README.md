@@ -1,25 +1,22 @@
-# MIP (My IP)
-## Dependencies
-asciiworld --> https://github.com/vain/asciiworld
+# MIP - MyIP
 
-asciiworld installation :
-- Pre-install :
-  - RHEL : gd-devel, shapelib-devel
-  - Debian : libgd-dev, libshape-dev
-- Run make
-- Test "./asciiworld"
-- Put it/link it into */usr/local/bin/asciiworld*
+[![Docker Repository on Quay](https://quay.io/repository/fydrah/mip/status "Docker Repository on Quay")](https://quay.io/repository/fydrah/mip)
 
-## Install
+Simple Dockerfile and python script:
 
-Update `asciiworld_bin` variable into the script, default to */usr/local/asciiworld*.
+* Ask http://ip-api.com for external IP and location
+* Use [asciiworld](https://www.uninformativ.de/git/asciiworld.git) to render location
 
-```shell
-chmod +x mip
-mv mip /usr/local/bin/
-```
+Usage:
 
-## Functionnality
-This little script uses an API from "ip-api.com", create a temp file under */tmp/* where it puts latitude and longitude of your external IP. It also print your external IP and the city where it comes from.
+  ```
+  alias mip="docker run --rm -it quay.io/fydrah/mip:latest"
+  mip
+  ```
 
-## Enjoy !
+Build your own image:
+
+  ```
+  docker build . -t mip:latest
+  docker run --rm -it mip:latest
+  ```
