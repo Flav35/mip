@@ -9,7 +9,7 @@ try:
 except Exception as e:
   print(e)
 
-filename = "asciiworld-latlong"
+filename = "/tmp/asciiworld-latlong"
 tmp_file = open(filename,"w")
 tmp_file.write("points\n")
 tmp_file.write(str(data['lat'])+" "+str(data['lon']))
